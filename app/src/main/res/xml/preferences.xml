@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <PreferenceCategory
+        app:key="@string/key_car_category"
+        app:title="@string/settings.car.category">
+
+        <SwitchPreference
+            app:key="@string/key_car_active"
+            app:title="@string/settings.active" />
+
+        <DropDownPreference
+            app:key="@string/key_car_rate"
+            app:title="@string/settings.rate"
+            app:entries="@array/settings.rates"
+            app:entryValues="@array/val_rates" />
+
+        <SeekBarPreference
+            app:key="@string/key_car_threshold"
+            app:title="@string/settings.detector_threshold"
+            app:min="0"
+            android:max="100"
+            />
+
+        <SeekBarPreference
+            app:key="@string/key_car_tailgating_distance"
+            app:title="@string/settings.tailgating_distance"
+            app:min="0"
+            android:max="300"
+            />
+
+        <SeekBarPreference
+            app:key="@string/key_car_tailgating_duration"
+            app:title="@string/settings.tailgating_duration"
+            app:min="0"
+            android:max="300"
+            />
+
+        <SeekBarPreference
+            app:key="@string/key_car_ff_tailgating_duration"
+            app:title="@string/settings.ff_tailgating_duration"
+            app:min="0"
+            android:max="300"
+            />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="@string/key_sign_category"
+        app:title="@string/settings.sign.category">
+
+        <SwitchPreference
+            app:key="@string/key_sign_active"
+            app:title="@string/settings.active" />
+
+        <DropDownPreference
+            app:key="@string/key_sign_vehicle_type"
+            app:title="@string/settings.sign.vehicle_type"
+            app:entries="@array/settings.vehicle_types"
+            app:entryValues="@array/val_vehicle_types" />
+
+        <DropDownPreference
+            app:key="@string/key_sign_rate"
+            app:title="@string/settings.rate"
+            app:entries="@array/settings.rates"
+            app:entryValues="@array/val_rates" />
+
+        <SeekBarPreference
+            app:key="@string/key_sign_dynamic_threshold"
+            app:title="@string/settings.signs.dynamic_threshold"
+            app:min="0"
+            android:max="100"
+            />
+
+        <SeekBarPreference
+            app:key="@string/key_sign_detector_threshold"
+            app:title="@string/settings.signs.standard_threshold"
+            app:min="0"
+            android:max="100"
+            />
+
+        <SeekBarPreference
+            app:key="@string/key_sign_additional_threshold"
+            app:title="@string/settings.signs.additional_threshold"
+            app:min="0"
+            android:max="100"
+            />
+
+        <SwitchPreference
+            app:key="@string/key_sign_ignore_on_cars"
+            app:title="@string/settings.signs.ignore_on_cars" />
+
+        <SwitchPreference
+            app:key="@string/key_sign_speed_limit_only"
+            app:title="@string/settings.signs.speed_limits_only" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="@string/key_road_category"
+        app:title="@string/settings.road.category">
+
+        <SwitchPreference
+            app:key="@string/key_road_active"
+            app:title="@string/settings.active" />
+
+        <DropDownPreference
+            app:key="@string/key_road_rate"
+            app:title="@string/settings.rate"
+            app:entries="@array/settings.rates"
+            app:entryValues="@array/val_rates" />
+
+        <DropDownPreference
+            app:key="@string/key_road_mode"
+            app:title="@string/settings.mode"
+            app:entries="@array/settings.modes"
+            app:entryValues="@array/val_modes" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="@string/key_lane_category"
+        app:title="@string/settings.lane.category">
+
+        <SwitchPreference
+            app:key="@string/key_lane_active"
+            app:title="@string/settings.active" />
+
+
+        <SwitchPreference
+            app:key="@string/key_lane_pause_when_not_moving"
+            app:title="@string/settings.lane.pause_when_not_moving" />
+
+
+        <SwitchPreference
+            app:key="@string/key_lane_fast_focus_mode"
+            app:title="@string/settings.lane.fast_focus_mode" />
+
+        <SwitchPreference
+            app:key="@string/key_lane_dynamic_focus"
+            app:title="@string/settings.lane.dynamic_focus" />
+
+        <SeekBarPreference
+            app:key="@string/key_lane_min_samples"
+            app:title="@string/settings.lane.min_samples"
+            app:min="0"
+            android:max="100" />
+
+        <SeekBarPreference
+            app:key="@string/key_lane_max_samples"
+            app:title="@string/settings.lane.max_samples"
+            app:min="0"
+            android:max="100" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="@string/key_text_category"
+        app:title="@string/settings.text.category">
+
+        <SwitchPreference
+            app:key="@string/key_text_active"
+            app:title="@string/settings.active" />
+
+        <DropDownPreference
+            app:key="@string/key_text_rate"
+            app:title="@string/settings.rate"
+            app:entries="@array/settings.rates"
+            app:entryValues="@array/val_rates" />
+
+        <SwitchPreference
+            app:key="@string/key_text_on_cars_only"
+            app:title="@string/settings.text.on_cars_only" />
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
+        app:key="@string/key_ar_category"
+        app:title="@string/settings.ar.category">
+
+        <SwitchPreference
+            app:key="@string/key_ar_active"
+            app:title="@string/settings.active" />
+
+        <SwitchPreference
+            app:key="@string/key_ar_heading_correction"
+            app:title="@string/settings.ar.heading_correction" />
+
+        <SwitchPreference
+            app:key="@string/key_ar_feature_tracking"
+            app:title="@string/settings.ar.feature_tracking" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="@string/key_dashcam_category"
+        app:title="@string/settings.dashcam.category">
+
+        <SwitchPreference
+            app:key="@string/key_dashcam_active"
+            app:title="@string/settings.active" />
+
+        <SeekBarPreference
+            app:key="@string/key_dashcam_video_duration"
+            app:title="@string/settings.dashcam.video_duration"
+            app:min="1"
+            android:max="15" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="@string/key_reset_category"
+        app:title="@string/settings.reset.category">
+
+        <Preference
+            app:key="@string/key_reset_to_defaults"
+            android:title="@string/settings.reset.defaults"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

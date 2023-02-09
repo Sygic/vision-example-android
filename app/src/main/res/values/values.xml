@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="key_sign_category">signsCategory</string>
+    <string name="key_sign_active">signsActive</string>
+    <string name="key_sign_vehicle_type">signsVehicleType</string>
+    <string name="key_sign_rate">signsRate</string>
+    <string name="key_sign_class_threshold">signsClassThreshold</string>
+    <string name="key_sign_detector_threshold">signsDetectorThreshold</string>
+    <string name="key_sign_dynamic_threshold">signsDynamicThreshold</string>
+    <string name="key_sign_additional_threshold">signsAdditionalThreshold</string>
+    <string name="key_sign_ignore_on_cars">signsIgnoreOnCars</string>
+    <string name="key_sign_speed_limit_only">signsSpeedLimitOnly</string>
+
+    <string name="key_car_category">carCategory</string>
+    <string name="key_car_active">carActive</string>
+    <string name="key_car_rate">carRate</string>
+    <string name="key_car_threshold">carThreshold</string>
+    <string name="key_car_tailgating_distance">carTailgatingDistance</string>
+    <string name="key_car_tailgating_duration">carTailgatingDuration</string>
+    <string name="key_car_ff_tailgating_duration">carFfTailgatingDuration</string>
+
+    <string name="key_lane_category">laneCategory</string>
+    <string name="key_lane_active">laneActive</string>
+    <string name="key_lane_pause_when_not_moving">lanePauseWhenNotMoving</string>
+    <string name="key_lane_fast_focus_mode">laneFastFocusMode</string>
+    <string name="key_lane_dynamic_focus">laneDynamicFocus</string>
+    <string name="key_lane_min_samples">laneMinSamples</string>
+    <string name="key_lane_max_samples">laneMaxSamples</string>
+
+    <string name="key_road_category">roadCategory</string>
+    <string name="key_road_active">roadActive</string>
+    <string name="key_road_rate">roadRate</string>
+    <string name="key_road_mode">roadMode</string>
+
+    <string name="key_text_category">textCategory</string>
+    <string name="key_text_active">textActive</string>
+    <string name="key_text_rate">textRate</string>
+    <string name="key_text_on_cars_only">textOnCarsOnly</string>
+
+    <string name="key_reset_category">resetCategory</string>
+    <string name="key_reset_to_defaults">resetToDefaults</string>
+
+    <string name="key_ar_category">arCategory</string>
+    <string name="key_ar_active">arActive</string>
+    <string name="key_ar_heading_correction">arHeadingCorrection</string>
+    <string name="key_ar_feature_tracking">arFeatureTracking</string>
+
+    <string name="key_dashcam_category">dashcamCategory</string>
+    <string name="key_dashcam_active">dashcamActive</string>
+    <string name="key_dashcam_video_duration">dashcamVideoDuration</string>
+
+    <string name="val_vehicle_car">car</string>
+    <string name="val_vehicle_truck">truck</string>
+    <integer-array name="val_vehicle_types">
+        <item>@string/val_vehicle_car</item>
+        <item>@string/val_vehicle_truck</item>
+    </integer-array>
+
+    <string name="val_rate_ultra_low">UltraLow</string>
+    <string name="val_rate_low">Low</string>
+    <string name="val_rate_medium">Medium</string>
+    <string name="val_rate_high">High</string>
+    <string-array name="val_rates">
+        <item>@string/val_rate_high</item>
+        <item>@string/val_rate_medium</item>
+        <item>@string/val_rate_low</item>
+        <item>@string/val_rate_ultra_low</item>
+    </string-array>
+
+    <string name="val_mode_fixed">Fixed</string>
+    <string name="val_mode_dynamic">Dynamic</string>
+    <string-array name="val_modes">
+        <item>@string/val_mode_fixed</item>
+        <item>@string/val_mode_dynamic</item>
+    </string-array>
+</resources>

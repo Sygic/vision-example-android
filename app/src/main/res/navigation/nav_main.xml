@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/visionFragment">
+
+    <fragment
+        android:id="@+id/visionFragment"
+        android:name="com.sygic.adas.visiontestapp.ui.vision.VisionFragment"
+        android:label="VisionFragment" >
+        <action
+            android:id="@+id/action_visionFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.sygic.adas.visiontestapp.ui.settings.SettingsFragment"
+        android:label="SettingsFragment" />
+</navigation>

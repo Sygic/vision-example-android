@@ -1,2 +1,2 @@
 # vision-example-android
-Demo android app for Sygic Vision library
+Demo Android app for Sygic Vision library

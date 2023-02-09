@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">SygicVision</string>
+
+    <string name="settings.vehicle_car">Car</string>
+    <string name="settings.vehicle_truck">Truck</string>
+    <string-array name="settings.vehicle_types">
+        <item>@string/settings.vehicle_car</item>
+        <item>@string/settings.vehicle_truck</item>
+    </string-array>
+
+    <string name="settings.rate_ultra_low">UltraLow</string>
+    <string name="settings.rate_low">Low</string>
+    <string name="settings.rate_medium">Medium</string>
+    <string name="settings.rate_high">High</string>
+    <string-array name="settings.rates">
+        <item>@string/settings.rate_ultra_low</item>
+        <item>@string/settings.rate_low</item>
+        <item>@string/settings.rate_medium</item>
+        <item>@string/settings.rate_high</item>
+    </string-array>
+
+    <string name="settings.mode_fixed">Fixed</string>
+    <string name="settings.mode_dynamic">Dynamic</string>
+    <string-array name="settings.modes">
+        <item>@string/settings.mode_fixed</item>
+        <item>@string/settings.mode_dynamic</item>
+    </string-array>
+
+    <string name="settings.sign.category">Sign detection</string>
+    <string name="settings.sign.vehicle_type">Vehicle type</string>
+    <string name="settings.active">Active</string>
+    <string name="settings.rate">Rate</string>
+    <string name="settings.mode">Mode</string>
+    <string name="settings.class_threshold">Classificator threshold</string>
+    <string name="settings.detector_threshold">Standard threshold</string>
+    <string name="settings.signs.standard_threshold">Standard threshold</string>
+    <string name="settings.signs.dynamic_threshold">Dynamic threshold</string>
+    <string name="settings.signs.additional_threshold">Additional threshold</string>
+    <string name="settings.signs.ignore_on_cars">Ignore signs on cars</string>
+    <string name="settings.signs.speed_limits_only">Show speed limits only</string>
+    <string name="settings.car.category">Car detection</string>
+    <string name="settings.tailgating_distance">Tailgating time distance (sec)</string>
+    <string name="settings.tailgating_duration">Tailgating duration (sec)</string>
+    <string name="settings.ff_tailgating_duration">FF Tailgating duration (sec)</string>
+    <string name="settings.lane.category">Lane estimation</string>
+    <string name="settings.lane.pause_when_not_moving">Pause when not moving</string>
+    <string name="settings.lane.fast_focus_mode">Fast focus mode</string>
+    <string name="settings.lane.dynamic_focus">Dynamic focus axis</string>
+    <string name="settings.lane.min_samples">Min focus samples</string>
+    <string name="settings.lane.max_samples">Max focus samples</string>
+    <string name="settings.road.category">Road segmentation</string>
+    <string name="settings.text.category">Text recognition</string>
+    <string name="settings.text.on_cars_only">Show on cars only</string>
+    <string name="settings.ar.category">AR</string>
+    <string name="settings.ar.heading_correction">Heading correction</string>
+    <string name="settings.ar.feature_tracking">Feature tracking</string>
+    <string name="settings.dashcam.category">Dashcam</string>
+    <string name="settings.dashcam.video_duration">Video duration (min)</string>
+    <string name="settings.reset.category">Reset</string>
+    <string name="settings.reset.defaults">Reset to defaults</string>
+
+</resources>
