@@ -24,11 +24,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.sygic.adas.vision.Vision
 import com.sygic.adas.visiontestapp.MainActivity
 import com.sygic.adas.visiontestapp.R
-import com.sygic.adas.visiontestapp.core.Constants
+import com.sygic.adas.visiontestapp.core.*
 import com.sygic.adas.visiontestapp.core.camera.CameraManager
-import com.sygic.adas.visiontestapp.core.format
-import com.sygic.adas.visiontestapp.core.launchAndRepeatWithViewLifecycle
-import com.sygic.adas.visiontestapp.core.launchOnViewLifecycle
 import com.sygic.adas.visiontestapp.core.settings.AppSettings
 import com.sygic.adas.visiontestapp.core.util.MediaStoreUtil
 import com.sygic.adas.visiontestapp.databinding.FragmentVisionBinding
@@ -376,22 +373,4 @@ class VisionFragment : Fragment() {
         snackbar?.dismiss()
         snackbar = null
     }
-}
-
-@DrawableRes
-private fun Int.speedLimitDrawableId(): Int? = when (this) {
-    10 -> R.drawable.maximum_speed_limit_10
-    20 -> R.drawable.maximum_speed_limit_20
-    30 -> R.drawable.maximum_speed_limit_30
-    40 -> R.drawable.maximum_speed_limit_40
-    50 -> R.drawable.maximum_speed_limit_50
-    60 -> R.drawable.maximum_speed_limit_60
-    70 -> R.drawable.maximum_speed_limit_70
-    80 -> R.drawable.maximum_speed_limit_80
-    90 -> R.drawable.maximum_speed_limit_90
-    100 -> R.drawable.maximum_speed_limit_100
-    110 -> R.drawable.maximum_speed_limit_110
-    120 -> R.drawable.maximum_speed_limit_120
-    130 -> R.drawable.maximum_speed_limit_130
-    else -> null
 }

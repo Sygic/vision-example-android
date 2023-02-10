@@ -11,11 +11,10 @@ import com.sygic.adas.vision.logic.VehicleType
 import com.sygic.adas.visiontestapp.R
 import com.sygic.adas.visiontestapp.core.format
 import com.sygic.adas.visiontestapp.core.launchAndRepeatWithViewLifecycle
-import com.sygic.adas.visiontestapp.core.settings.*
+import com.sygic.adas.visiontestapp.core.settings.AppSettings
 import com.sygic.adas.visiontestapp.getSupportActionBar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 
@@ -228,21 +227,21 @@ class SettingsFragment : PreferenceFragmentCompat() {
             ) { active -> settings.setLanesActive(active) }
         }
 
-//        // Lanes - pause when not moving
-//        switchPref(settings.prefKeyLanePauseWhenNotMoving)?.let { pref ->
-//            pref.setupSwitchPreference(
-//                setting = settings.lanesPauseWhenNotMoving,
-//                enableBy = settings.lanesActive
-//            ) { pause -> settings.setLanesPauseWhenNotMoving(pause) }
-//        }
-//
-//        // Lanes - fast focus mode
-//        switchPref(settings.prefKeyLaneFastFocusMode)?.let { pref ->
-//            pref.setupSwitchPreference(
-//                setting = settings.lanesFastFocusMode,
-//                enableBy = settings.lanesActive
-//            ) { ffMode -> settings.setLanesFastFocusMode(ffMode) }
-//        }
+        // Lanes - pause when not moving
+        switchPref(settings.prefKeyLanePauseWhenNotMoving)?.let { pref ->
+            pref.setupSwitchPreference(
+                setting = settings.lanesPauseWhenNotMoving,
+                enableBy = settings.lanesActive
+            ) { pause -> settings.setLanesPauseWhenNotMoving(pause) }
+        }
+
+        // Lanes - fast focus mode
+        switchPref(settings.prefKeyLaneFastFocusMode)?.let { pref ->
+            pref.setupSwitchPreference(
+                setting = settings.lanesFastFocusMode,
+                enableBy = settings.lanesActive
+            ) { ffMode -> settings.setLanesFastFocusMode(ffMode) }
+        }
 
         // Lanes - dynamic focus axis
         switchPref(settings.prefKeyLaneDynamicFocus)?.let { pref ->
@@ -297,29 +296,29 @@ class SettingsFragment : PreferenceFragmentCompat() {
             ) { onCarsOnly -> settings.setTextShowOnCarsOnly(onCarsOnly) }
         }
 
-//        // AR - active
-//        switchPref(settings.prefKeyArActive)?.let { pref ->
-//            pref.setupSwitchPreference(
-//                setting = settings.arActive,
-//                enableBy = null
-//            ) { active -> settings.setArActive(active) }
-//        }
-//
-//        // AR - heading correction
-//        switchPref(settings.prefKeyArHeadingCorrection)?.let { pref ->
-//            pref.setupSwitchPreference(
-//                setting = settings.arHeadingCorrection,
-//                enableBy = settings.arActive
-//            ) { correction -> settings.setArHeadingCorrection(correction) }
-//        }
-//
-//        // AR - feature tracking
-//        switchPref(settings.prefKeyArFeatureTracking)?.let { pref ->
-//            pref.setupSwitchPreference(
-//                setting = settings.arFeatureTracking,
-//                enableBy = settings.arActive
-//            ) { ft -> settings.setArFeatureTracking(ft) }
-//        }
+        // AR - active
+        switchPref(settings.prefKeyArActive)?.let { pref ->
+            pref.setupSwitchPreference(
+                setting = settings.arActive,
+                enableBy = null
+            ) { active -> settings.setArActive(active) }
+        }
+
+        // AR - heading correction
+        switchPref(settings.prefKeyArHeadingCorrection)?.let { pref ->
+            pref.setupSwitchPreference(
+                setting = settings.arHeadingCorrection,
+                enableBy = settings.arActive
+            ) { correction -> settings.setArHeadingCorrection(correction) }
+        }
+
+        // AR - feature tracking
+        switchPref(settings.prefKeyArFeatureTracking)?.let { pref ->
+            pref.setupSwitchPreference(
+                setting = settings.arFeatureTracking,
+                enableBy = settings.arActive
+            ) { ft -> settings.setArFeatureTracking(ft) }
+        }
 
         // Reset to defaults
         pref(settings.prefKeyResetToDefaults)?.let { pref ->
@@ -386,10 +385,10 @@ class SettingsFragment : PreferenceFragmentCompat() {
         launchAndRepeatWithViewLifecycle {
             setting.collect { rate ->
                 when (rate) {
-//                    VisionPerformance.Rate.UltraLow -> {
-//                        value = valRateUltraLow
-//                        summary = getString(R.string.settings_rate_ultra_low)
-//                    }
+                    VisionPerformance.Rate.UltraLow -> {
+                        value = valRateUltraLow
+                        summary = getString(R.string.settings_rate_ultra_low)
+                    }
                     VisionPerformance.Rate.Low -> {
                         value = valRateLow
                         summary = getString(R.string.settings_rate_low)
@@ -409,7 +408,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
             (newValue as? String)?.let {
                 val newRate = when (it) {
-//                    valRateUltraLow -> VisionPerformance.Rate.UltraLow
+                    valRateUltraLow -> VisionPerformance.Rate.UltraLow
                     valRateLow -> VisionPerformance.Rate.Low
                     valRateMedium -> VisionPerformance.Rate.Medium
                     valRateHigh -> VisionPerformance.Rate.High

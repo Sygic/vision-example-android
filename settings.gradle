@@ -5,6 +5,6 @@ rootProject.name = "vision-demo"
 
 def visionLibPath = gradle.getVisionLibPath()
 if (!visionLibPath.isEmpty()) {
-    include ":lib"
-    project(":lib").projectDir = file("../visionlib/Android/lib")
+    include ":visionlib"
+    project(":visionlib").projectDir = file(visionLibPath)
 }

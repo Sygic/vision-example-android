@@ -29,8 +29,8 @@ class AppSettingsImpl(context: Context): AppSettings(context) {
     private val keySignsRate = intPreferencesKey(prefKeySignRate)
     private val keySignsClassificatorThreshold = floatPreferencesKey(prefKeySignClassThreshold)
     private val keySignsDetectorThreshold = floatPreferencesKey(prefKeySignDetectorThreshold)
-//    private val keySignsDynamicThreshold = floatPreferencesKey(prefKeySignDynamicThreshold)
-//    private val keySignsAdditionalThreshold = floatPreferencesKey(prefKeySignAdditionalThreshold)
+    private val keySignsDynamicThreshold = floatPreferencesKey(prefKeySignDynamicThreshold)
+    private val keySignsAdditionalThreshold = floatPreferencesKey(prefKeySignAdditionalThreshold)
     private val keySignsIgnoreOnCars = booleanPreferencesKey(prefKeySignIgnoreOnCars)
     private val keySignsSpeedLimitsOnly = booleanPreferencesKey(prefKeySpeedLimitOnly)
     private val keyVehiclesActive = booleanPreferencesKey(prefKeyVehicleActive)
@@ -40,8 +40,8 @@ class AppSettingsImpl(context: Context): AppSettings(context) {
     private val keyTailgatingDuration = floatPreferencesKey(prefKeyTailgatingDuration)
     private val keyFfTailgatingDuration = floatPreferencesKey(prefKeyFfTailgatingDuration)
     private val keyLanesActive = booleanPreferencesKey(prefKeyLaneActive)
-//    private val keyLanesPauseWhenNotMoving = booleanPreferencesKey(prefKeyLanePauseWhenNotMoving)
-//    private val keyLanesFastFocusMode = booleanPreferencesKey(prefKeyLaneFastFocusMode)
+    private val keyLanesPauseWhenNotMoving = booleanPreferencesKey(prefKeyLanePauseWhenNotMoving)
+    private val keyLanesFastFocusMode = booleanPreferencesKey(prefKeyLaneFastFocusMode)
     private val keyLanesDynamicFocus = booleanPreferencesKey(prefKeyLaneDynamicFocus)
     private val keyLanesMinSamples = intPreferencesKey(prefKeyLaneMinSamples)
     private val keyLanesMaxSamples = intPreferencesKey(prefKeyLaneMaxSamples)
@@ -51,9 +51,9 @@ class AppSettingsImpl(context: Context): AppSettings(context) {
     private val keyTextActive = booleanPreferencesKey(prefKeyTextActive)
     private val keyTextRate = intPreferencesKey(prefKeyTextRate)
     private val keyTextShowOnCarsOnly = booleanPreferencesKey(prefKeyTextOnCarsOnly)
-//    private val keyArActive = booleanPreferencesKey(prefKeyArActive)
-//    private val keyArFeatureTracking = booleanPreferencesKey(prefKeyArFeatureTracking)
-//    private val keyArHeadingCorrection = booleanPreferencesKey(prefKeyArHeadingCorrection)
+    private val keyArActive = booleanPreferencesKey(prefKeyArActive)
+    private val keyArFeatureTracking = booleanPreferencesKey(prefKeyArFeatureTracking)
+    private val keyArHeadingCorrection = booleanPreferencesKey(prefKeyArHeadingCorrection)
     private val keyDashcamActive = booleanPreferencesKey(prefKeyDashcamActive)
     private val keyDashcamVideoDuration = intPreferencesKey(prefKeyDashcamVideoDuration)
 
@@ -86,14 +86,13 @@ class AppSettingsImpl(context: Context): AppSettings(context) {
         it[keySignsDetectorThreshold] ?: defaultVisionConfig.sign.detectorThreshold
     }
 
-    // TODO uncomment
-//    override val signsDynamicThreshold: Flow<Float> = dataStore.data.map {
-//        it[keySignsDynamicThreshold] ?: defaultVisionConfig.sign.dynamicSpeedLimitThreshold
-//    }
-//
-//    override val signsAdditionalThreshold: Flow<Float> = dataStore.data.map {
-//        it[keySignsAdditionalThreshold] ?: defaultVisionConfig.sign.additionalDetectorThreshold
-//    }
+    override val signsDynamicThreshold: Flow<Float> = dataStore.data.map {
+        it[keySignsDynamicThreshold] ?: defaultVisionConfig.sign.dynamicSpeedLimitThreshold
+    }
+
+    override val signsAdditionalThreshold: Flow<Float> = dataStore.data.map {
+        it[keySignsAdditionalThreshold] ?: defaultVisionConfig.sign.additionalDetectorThreshold
+    }
 
     override val signsIgnoreOnCars: Flow<Boolean> = dataStore.data.map {
         it[keySignsIgnoreOnCars] ?: defaultVisionConfig.sign.ignoreSignsOnCar
@@ -131,13 +130,13 @@ class AppSettingsImpl(context: Context): AppSettings(context) {
         it[keyLanesActive] ?: defaultVisionConfig.lane.active
     }
 
-//    override val lanesPauseWhenNotMoving: Flow<Boolean> = dataStore.data.map {
-//        it[keyLanesPauseWhenNotMoving] ?: defaultVisionConfig.lane.pauseWhenNotMoving
-//    }
-//
-//    override val lanesFastFocusMode: Flow<Boolean> = dataStore.data.map {
-//        it[keyLanesFastFocusMode] ?: defaultVisionConfig.lane.fastFocusMode
-//    }
+    override val lanesPauseWhenNotMoving: Flow<Boolean> = dataStore.data.map {
+        it[keyLanesPauseWhenNotMoving] ?: defaultVisionConfig.lane.pauseWhenNotMoving
+    }
+
+    override val lanesFastFocusMode: Flow<Boolean> = dataStore.data.map {
+        it[keyLanesFastFocusMode] ?: defaultVisionConfig.lane.fastFocusMode
+    }
 
     override val lanesDynamicFocus: Flow<Boolean> = dataStore.data.map {
         it[keyLanesDynamicFocus] ?: defaultVisionConfig.lane.dynamicFocusAxis
@@ -175,17 +174,17 @@ class AppSettingsImpl(context: Context): AppSettings(context) {
         it[keyTextShowOnCarsOnly] ?: defaultVisionConfig.text.showOnCarsOnly
     }
 
-//    override val arActive: Flow<Boolean> = dataStore.data.map {
-//        it[keyArActive] ?: defaultVisionConfig.ar.active
-//    }
-//
-//    override val arFeatureTracking: Flow<Boolean> = dataStore.data.map {
-//        it[keyArFeatureTracking] ?: defaultVisionConfig.ar.featureTracking
-//    }
-//
-//    override val arHeadingCorrection: Flow<Boolean> = dataStore.data.map {
-//        it[keyArHeadingCorrection] ?: defaultVisionConfig.ar.headingCorrection
-//    }
+    override val arActive: Flow<Boolean> = dataStore.data.map {
+        it[keyArActive] ?: defaultVisionConfig.ar.active
+    }
+
+    override val arFeatureTracking: Flow<Boolean> = dataStore.data.map {
+        it[keyArFeatureTracking] ?: defaultVisionConfig.ar.featureTracking
+    }
+
+    override val arHeadingCorrection: Flow<Boolean> = dataStore.data.map {
+        it[keyArHeadingCorrection] ?: defaultVisionConfig.ar.headingCorrection
+    }
 
     override val dashcamActive: Flow<Boolean> = dataStore.data.map {
         it[keyDashcamActive] ?: false
@@ -220,15 +219,15 @@ class AppSettingsImpl(context: Context): AppSettings(context) {
         onVisionConfigChanged()
     }
 
-//    override suspend fun setSignsDynamicThreshold(threshold: Float) {
-//        dataStore.edit { it[keySignsDetectorThreshold] = threshold }
-//        onVisionConfigChanged()
-//    }
-//
-//    override suspend fun setSignsAdditionalThreshold(threshold: Float) {
-//        dataStore.edit { it[keySignsDetectorThreshold] = threshold }
-//        onVisionConfigChanged()
-//    }
+    override suspend fun setSignsDynamicThreshold(threshold: Float) {
+        dataStore.edit { it[keySignsDetectorThreshold] = threshold }
+        onVisionConfigChanged()
+    }
+
+    override suspend fun setSignsAdditionalThreshold(threshold: Float) {
+        dataStore.edit { it[keySignsDetectorThreshold] = threshold }
+        onVisionConfigChanged()
+    }
 
     override suspend fun setSignsIgnoreOnCars(ignore: Boolean) {
         dataStore.edit { it[keySignsIgnoreOnCars] = ignore }
@@ -275,15 +274,15 @@ class AppSettingsImpl(context: Context): AppSettings(context) {
         onVisionConfigChanged()
     }
 
-//    override suspend fun setLanesPauseWhenNotMoving(pause: Boolean) {
-//        dataStore.edit { it[keyLanesPauseWhenNotMoving] = pause }
-//        onVisionConfigChanged()
-//    }
-//
-//    override suspend fun setLanesFastFocusMode(ffMode: Boolean) {
-//        dataStore.edit { it[keyLanesFastFocusMode] = ffMode }
-//        onVisionConfigChanged()
-//    }
+    override suspend fun setLanesPauseWhenNotMoving(pause: Boolean) {
+        dataStore.edit { it[keyLanesPauseWhenNotMoving] = pause }
+        onVisionConfigChanged()
+    }
+
+    override suspend fun setLanesFastFocusMode(ffMode: Boolean) {
+        dataStore.edit { it[keyLanesFastFocusMode] = ffMode }
+        onVisionConfigChanged()
+    }
 
     override suspend fun setLanesDynamicFocus(dynamicFocus: Boolean) {
         dataStore.edit { it[keyLanesDynamicFocus] = dynamicFocus }
@@ -330,20 +329,20 @@ class AppSettingsImpl(context: Context): AppSettings(context) {
         onVisionConfigChanged()
     }
 
-//    override suspend fun setArActive(active: Boolean) {
-//        dataStore.edit { it[keyArActive] = active }
-//        onVisionConfigChanged()
-//    }
-//
-//    override suspend fun setArFeatureTracking(featureTracking: Boolean) {
-//        dataStore.edit { it[keyArFeatureTracking] = featureTracking }
-//        onVisionConfigChanged()
-//    }
-//
-//    override suspend fun setArHeadingCorrection(headingCorrection: Boolean) {
-//        dataStore.edit { it[keyArHeadingCorrection] = headingCorrection }
-//        onVisionConfigChanged()
-//    }
+    override suspend fun setArActive(active: Boolean) {
+        dataStore.edit { it[keyArActive] = active }
+        onVisionConfigChanged()
+    }
+
+    override suspend fun setArFeatureTracking(featureTracking: Boolean) {
+        dataStore.edit { it[keyArFeatureTracking] = featureTracking }
+        onVisionConfigChanged()
+    }
+
+    override suspend fun setArHeadingCorrection(headingCorrection: Boolean) {
+        dataStore.edit { it[keyArHeadingCorrection] = headingCorrection }
+        onVisionConfigChanged()
+    }
 
     override suspend fun setDashcamActive(active: Boolean) {
         dataStore.edit { it[keyDashcamActive] = active }
@@ -375,8 +374,8 @@ class AppSettingsImpl(context: Context): AppSettings(context) {
                 active = signsActive.first(),
                 classificatorThreshold = signsClassificatorThreshold.first(),
                 detectorThreshold = signsStandardThreshold.first(),
-//                dynamicSpeedLimitThreshold = signsDynamicThreshold.first(),
-//                additionalDetectorThreshold = signsAdditionalThreshold.first(),
+                dynamicSpeedLimitThreshold = signsDynamicThreshold.first(),
+                additionalDetectorThreshold = signsAdditionalThreshold.first(),
                 ignoreSignsOnCar = signsIgnoreOnCars.first(),
                 performance = VisionPerformance(
                     mode = defaultVisionConfig.sign.performance.mode,
@@ -403,8 +402,8 @@ class AppSettingsImpl(context: Context): AppSettings(context) {
                 dynamicFocusAxis = lanesDynamicFocus.first(),
                 minFocusLineSamples = lanesMinSamples.first(),
                 maxFocusLineSamples = lanesMaxSamples.first(),
-//                pauseWhenNotMoving = lanesPauseWhenNotMoving.first(),
-//                fastFocusMode = lanesFastFocusMode.first()
+                pauseWhenNotMoving = lanesPauseWhenNotMoving.first(),
+                fastFocusMode = lanesFastFocusMode.first()
             ),
             text = VisionModuleTextConfig(
                 active = textActive.first(),
@@ -414,11 +413,11 @@ class AppSettingsImpl(context: Context): AppSettings(context) {
                     rate = roadRate.first()
                 )
             ),
-//            ar = VisionModuleArConfig(
-//                active = arActive.first(),
-//                featureTracking = arFeatureTracking.first(),
-//                headingCorrection = arHeadingCorrection.first()
-//            )
+            ar = VisionModuleArConfig(
+                active = arActive.first(),
+                featureTracking = arFeatureTracking.first(),
+                headingCorrection = arHeadingCorrection.first()
+            )
         )
     }
 

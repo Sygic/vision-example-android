@@ -7,8 +7,8 @@ class VisionApplication: Application() {
     override fun onCreate() {
         super.onCreate()
 
-        if(!BuildConfig.DEBUG) {
-            TestFairy.begin(this, "SDK-AQzTxOBz")
+        if(!BuildConfig.DEBUG && BuildConfig.TEST_FAIRY_KEY.isNotBlank()) {
+            TestFairy.begin(this, BuildConfig.TEST_FAIRY_KEY)
         }
     }
 }

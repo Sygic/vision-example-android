@@ -4,18 +4,20 @@ buildscript {
         sdk_version = 33
         build_tools_version = "33.0.0"
         kotlin_version = "1.8.0"
+        vision_version = "1.2.15"
         camerax_version = "1.3.0-alpha03"
         lifecycle_version = "2.5.1"
+        dokka_version = "1.7.20"
     }
 
     repositories {
         google()
-        jcenter()
         mavenCentral()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:7.4.1"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath("org.jetbrains.dokka:dokka-gradle-plugin:$dokka_version")
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

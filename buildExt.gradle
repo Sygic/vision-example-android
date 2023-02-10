@@ -25,3 +25,10 @@ gradle.ext.getSygicLicense = {
 
     return sygicLicense
 }
+
+    gradle.ext.getTestFairyKey = {
+    final def properties = new Properties()
+    final def localProperties = file('local.properties')
+    properties.load(localProperties.newDataInputStream())
+    return properties.getProperty("test.fairy.key", "")
+}

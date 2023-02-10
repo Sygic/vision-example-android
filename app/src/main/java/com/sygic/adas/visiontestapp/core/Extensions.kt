@@ -174,6 +174,24 @@ fun Sign.getDrawableId(): Int = when(this.signType) {
     Sign.Type.DynamicMaximumSpeedLimit130 -> R.drawable.dynamic_maximum_speed_limit_130
 }
 
+@DrawableRes
+fun Int.speedLimitDrawableId(): Int? = when (this) {
+    10 -> R.drawable.maximum_speed_limit_10
+    20 -> R.drawable.maximum_speed_limit_20
+    30 -> R.drawable.maximum_speed_limit_30
+    40 -> R.drawable.maximum_speed_limit_40
+    50 -> R.drawable.maximum_speed_limit_50
+    60 -> R.drawable.maximum_speed_limit_60
+    70 -> R.drawable.maximum_speed_limit_70
+    80 -> R.drawable.maximum_speed_limit_80
+    90 -> R.drawable.maximum_speed_limit_90
+    100 -> R.drawable.maximum_speed_limit_100
+    110 -> R.drawable.maximum_speed_limit_110
+    120 -> R.drawable.maximum_speed_limit_120
+    130 -> R.drawable.maximum_speed_limit_130
+    else -> null
+}
+
 fun Float.format(digits: Int): String = java.lang.String.format("%.${digits}f", this)
 
 fun <T> MutableList<T>.removeLast(count: Int) {
