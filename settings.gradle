@@ -6,5 +6,7 @@ rootProject.name = "vision-demo"
 def visionLibPath = gradle.getVisionLibPath()
 if (!visionLibPath.isEmpty()) {
     include ":visionlib"
+    include ":visionlib-ktx"
     project(":visionlib").projectDir = file(visionLibPath)
+    project(":visionlib-ktx").projectDir = file("${visionLibPath}-ktx")
 }

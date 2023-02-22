@@ -1,6 +1,7 @@
 package com.sygic.adas.visiontestapp.core.vision
 
 import android.content.Context
+import android.util.Log
 import com.sygic.adas.vision.Vision
 import com.sygic.adas.vision.ar_object.ArObject
 import com.sygic.adas.vision.licensing.SygicLicense
@@ -58,6 +59,11 @@ class VisionManager(
     }
 
     private suspend fun initializeInternal() {
+        if(!VisionLogic.isInitialized) {
+            VisionLogic.initialize(context)
+        }
+        visionLogicInstance.value = VisionLogic.getInstance()
+
         if(!Vision.isInitialized) {
             val cameraParams = CameraParamsProvider(context).getParams()
             val visionConfig = settings.visionConfiguration.first()
@@ -73,14 +79,9 @@ class VisionManager(
         }
         else {
             _visionInstance.value = Vision.getInstance()
+            onInitialized()
         }
 
-        if(!VisionLogic.isInitialized) {
-            VisionLogic.initialize(context)
-        }
-        visionLogicInstance.value = VisionLogic.getInstance()
-
-        onInitialized()
     }
 
     private fun deinitializeInternal() {
@@ -126,9 +127,12 @@ class VisionManager(
 
     private val visionInitListener = object: Vision.InitListener {
         override fun onInitStateChanged(state: Vision.InitState) {
-            _visionInstance.value =
-                if(state == Vision.InitState.Initialized) Vision.getInstance() else null
-
+            if(state == Vision.InitState.Initialized) {
+                _visionInstance.value = Vision.getInstance()
+                onInitialized()
+            } else {
+                _visionInstance.value = null
+            }
             _initState.value = state
         }
     }

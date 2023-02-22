@@ -361,11 +361,11 @@ class AppSettingsImpl(context: Context): AppSettings(context) {
     }
 
     private suspend fun onVisionConfigChanged() {
-        _visionConfiguration.emit(getVisionConfig())
+        _visionConfiguration.value = getVisionConfig()
     }
 
     private suspend fun onVisionLogicConfigChanged() {
-        _visionLogicConfiguration.emit(getVisionLogicConfig())
+        _visionLogicConfiguration.value = getVisionLogicConfig()
     }
 
     private suspend fun getVisionConfig(): VisionConfig {
@@ -432,10 +432,10 @@ class AppSettingsImpl(context: Context): AppSettings(context) {
 
     init {
         scope.launch {
-            _visionConfiguration.emit(getVisionConfig())
+            _visionConfiguration.value = getVisionConfig()
         }
         scope.launch {
-            _visionLogicConfiguration.emit(getVisionLogicConfig())
+            _visionLogicConfiguration.value = getVisionLogicConfig()
         }
     }
 }
