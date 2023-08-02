@@ -1,15 +1,22 @@
 package com.sygic.adas.visiontestapp.core.vision
 
-import android.content.Context
-import android.util.Log
+import android.app.Application
+import androidx.lifecycle.ProcessLifecycleOwner
+import androidx.lifecycle.lifecycleScope
 import com.sygic.adas.vision.Vision
+import com.sygic.adas.vision.arObjectsFlow
 import com.sygic.adas.vision.ar_object.ArObject
+import com.sygic.adas.vision.licensePlatesFlow
 import com.sygic.adas.vision.licensing.SygicLicense
 import com.sygic.adas.vision.logic.SpeedLimitInfo
 import com.sygic.adas.vision.logic.TailgatingInfo
 import com.sygic.adas.vision.logic.VisionLogic
 import com.sygic.adas.vision.objects.VisionTextBlock
+import com.sygic.adas.vision.processingAvailabilityFlow
 import com.sygic.adas.vision.road.Road
+import com.sygic.adas.vision.roadFlow
+import com.sygic.adas.vision.speedLimitFlow
+import com.sygic.adas.vision.tailgatingFlow
 import com.sygic.adas.visiontestapp.BuildConfig
 import com.sygic.adas.visiontestapp.core.Constants
 import com.sygic.adas.visiontestapp.core.camera.CameraParamsProvider
@@ -22,10 +29,21 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-class VisionManager(
-    private val context: Context,
-    private val scope: CoroutineScope
+class VisionManager private constructor(
+    private val context: Application,
 ) {
+
+    private val scope: CoroutineScope = ProcessLifecycleOwner.get().lifecycleScope
+
+    companion object {
+        private var instance: VisionManager? = null
+        fun getInstance(application: Application): VisionManager {
+            return instance ?: synchronized(this) {
+                instance = VisionManager(application)
+                return instance!!
+            }
+        }
+    }
 
     private val settings = AppSettings.get(context)
 
@@ -124,6 +142,10 @@ class VisionManager(
     val arObject: StateFlow<ArObject?> = visionFlow {
         it.arObjectsFlow()
     }.stateIn(scope, SharingStarted.WhileSubscribed(), null)
+
+    val isReadyForProcessing: SharedFlow<Boolean> = visionFlow {
+        it.processingAvailabilityFlow()
+    }.shareIn(scope, SharingStarted.WhileSubscribed(), 0)
 
     private val visionInitListener = object: Vision.InitListener {
         override fun onInitStateChanged(state: Vision.InitState) {

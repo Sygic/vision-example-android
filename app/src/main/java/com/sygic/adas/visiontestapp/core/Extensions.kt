@@ -12,6 +12,7 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.Priority
 import com.sygic.adas.vision.objects.Sign
 import com.sygic.adas.visiontestapp.R
 import kotlinx.coroutines.CoroutineScope
@@ -232,10 +233,7 @@ fun FusedLocationProviderClient.accurateLocationFlow() = callbackFlow<Location> 
         }
     }
 
-    val locationRequest = LocationRequest.create().apply {
-        interval = 1000
-        priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-    }
+    val locationRequest = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 1000L).build()
 
     requestLocationUpdates(
         locationRequest,

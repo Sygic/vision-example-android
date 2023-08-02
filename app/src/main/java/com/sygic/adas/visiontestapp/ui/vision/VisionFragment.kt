@@ -14,10 +14,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.DrawableRes
+import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.asFlow
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -229,13 +231,20 @@ class VisionFragment : Fragment() {
                 }
         }
 
+        // if analyzing preview bitmap is required and PreviewView is streaming, analyze bitmap
         launchAndRepeatWithViewLifecycle {
-            cameraManager.shouldAnalyzePreview.collectLatest { shouldAnalyzePreview ->
+            combine(
+                cameraManager.shouldAnalyzePreview,
+                binding.cameraPreview.previewStreamState.asFlow()
+            ) { shouldAnalyzePreview, previewStreamState ->
+                shouldAnalyzePreview && previewStreamState == PreviewView.StreamState.STREAMING
+            }.collectLatest { shouldAnalyzePreview ->
                 if(shouldAnalyzePreview) {
-                    while(true) {
-                        delay(20)
-                        binding.cameraPreview.bitmap?.let {
-                            viewModel.onBitmap(it)
+                    viewModel.isReadyForProcessing.collect { isReadyForProcessing ->
+                        if(isReadyForProcessing) {
+                            binding.cameraPreview.bitmap?.let {
+                                viewModel.onBitmap(it)
+                            }
                         }
                     }
                 }

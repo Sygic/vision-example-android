@@ -27,7 +27,7 @@ import java.util.*
 @SuppressLint("UnsafeExperimentalUsageError")
 class VisionViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val visionManager = VisionManager(application, viewModelScope)
+    private val visionManager = VisionManager.getInstance(application)
     private val vision = visionManager.visionInstance
 
     private val appSettings: AppSettings = AppSettings.get(application)
@@ -42,6 +42,7 @@ class VisionViewModel(application: Application) : AndroidViewModel(application) 
     val arObject = visionManager.arObject
     val dashcamEnabled = appSettings.dashcamActive
     val dashcamVideoDuration = appSettings.dashcamVideoDuration
+    val isReadyForProcessing = visionManager.isReadyForProcessing
 
     private val _fps: MutableStateFlow<Float> = MutableStateFlow(0.0f)
     val fps = _fps.asStateFlow()
