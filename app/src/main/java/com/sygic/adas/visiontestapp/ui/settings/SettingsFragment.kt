@@ -386,10 +386,10 @@ class SettingsFragment : PreferenceFragmentCompat() {
         launchAndRepeatWithViewLifecycle {
             setting.collect { rate ->
                 when (rate) {
-//                    VisionPerformance.Rate.UltraLow -> {
-//                        value = valRateUltraLow
-//                        summary = getString(R.string.settings_rate_ultra_low)
-//                    }
+                    VisionPerformance.Rate.UltraLow -> {
+                        value = valRateUltraLow
+                        summary = getString(R.string.settings_rate_ultra_low)
+                    }
                     VisionPerformance.Rate.Low -> {
                         value = valRateLow
                         summary = getString(R.string.settings_rate_low)
